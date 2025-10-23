@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban Sips Coffee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        scroll-behavior: smooth;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+      }
+      section[id] {
+        scroll-margin-top: 5rem; /* Offset for the fixed header */
+      }
+      .aspect-video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+      }
+      .aspect-video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .menu-item {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .menu-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#2a1c12] text-white overflow-x-hidden">
+    
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#2a1c12]/80 backdrop-blur-sm">
+      <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-3 group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-amber-500 group-hover:scale-110 group-hover:drop-shadow-[0_4px_8px_rgba(251,191,36,0.6)] transition-all duration-300"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+            <line x1="6" y1="1" x2="6" y2="4" />
+            <line x1="10" y1="1" x2="10" y2="4" />
+            <line x1="14" y1="1" x2="14" y2="4" />
+          </svg>
+          <!-- <img src="logo.png"alt="logo"> -->
+          <span class="text-2xl font-bold text-amber-50 group-hover:text-white group-hover:drop-shadow-[0_2px_4px_rgba(255,255,255,0.2)] transition-all duration-300">
+            Urban Sips
+          </span>
+        </a>
+
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <ul id="nav-menu" class="hidden md:flex flex-col md:flex-row items-center md:space-x-8 absolute md:relative top-full left-0 w-full md:w-auto bg-[#2a1c12]/95 md:bg-transparent space-y-4 md:space-y-0 py-4 md:py-0 transition-all duration-300">
+          <li>
+            <a href="index.html" class="relative text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 group">
+              Home
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#our-coffee" class="relative text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 group">
+              Our Coffee
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+            </a>
+          </li>
+          <li>
+            <a href="orders.html" class="relative text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 group">
+              Orders
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#about-us" class="relative text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 group">
+              About Us
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+            </a>
+          </li>
+          <li>
+            <a href="login.html" class="relative text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 group">
+              Login
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section 
+        class="min-h-screen flex items-center justify-center text-center relative bg-cover bg-center bg-fixed"
+        style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"
+      >
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 px-6">
+          <h1 class="text-5xl md:text-7xl font-bold text-amber-50 leading-tight drop-shadow-lg">
+            Step into light
+          </h1>
+          <p class="mt-4 text-xl text-gray-300 max-w-lg mx-auto">
+            with our special coffee flavors
+          </p>
+          <button class="mt-8 px-8 py-3 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500 focus:ring-opacity-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+            Explore
+          </button>
+        </div>
+      </section>
+
+      <section id="our-coffee" class="py-20 bg-[#2a1c12]">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-amber-50 mb-12">
+                Discover Our Signature Blends
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+                <!-- Menu Item 1 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="velvet espresso.png" alt="Velvet Espresso" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Velvet Espresso</h3>
+                    <p class="text-gray-400 my-2 h-16">A rich, smooth shot with notes of dark chocolate and caramel.</p>
+                    <span class="text-xl font-semibold text-amber-400">$3.50</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="caramel machhiato.png" alt="Caramel Macchiato" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Caramel Macchiato</h3>
+                    <p class="text-gray-400 my-2 h-16">Steamed milk, vanilla syrup, and espresso, topped with caramel drizzle.</p>
+                    <span class="text-xl font-semibold text-amber-400">$4.75</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+                
+                <!-- Menu Item 3 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="spiced chai latte.png" alt="Spiced Chai Latte" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Spiced Chai Latte</h3>
+                    <p class="text-gray-400 my-2 h-16">Black tea infused with cinnamon, clove, and other warming spices.</p>
+                    <span class="text-xl font-semibold text-amber-400">$4.50</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="iced mocha.png" alt="Iced Mocha" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Iced Mocha</h3>
+                    <p class="text-gray-400 my-2 h-16">Chilled espresso, rich chocolate sauce, and milk over ice.</p>
+                    <span class="text-xl font-semibold text-amber-400">$5.00</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="classic cappucino.png" alt="Classic Cappuccino" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Classic Cappuccino</h3>
+                    <p class="text-gray-400 my-2 h-16">A perfect balance of espresso, steamed milk, and a thick layer of foam.</p>
+                    <span class="text-xl font-semibold text-amber-400">$4.00</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Menu Item 6 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="hazelnut cold brew.png
+                    " alt="Hazelnut Cold Brew" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Hazelnut Cold Brew</h3>
+                    <p class="text-gray-400 my-2 h-16">Slow-steeped cold brew infused with a sweet, nutty hazelnut flavor.</p>
+                    <span class="text-xl font-semibold text-amber-400">$4.25</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Menu Item 7 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="matcha green tea.png" alt="Matcha Green Tea" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Matcha Green Tea</h3>
+                    <p class="text-gray-400 my-2 h-16">Finely ground green tea leaves, whisked with steamed milk.</p>
+                    <span class="text-xl font-semibold text-amber-400">$5.25</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+
+                <!-- Menu Item 8 -->
+                <div class="menu-item text-center transition-transform duration-300 ease-in-out hover:scale-105">
+                    <img src="salted caramel frappe.png" alt="Salted Caramel Frappé" class="w-48 h-48 mx-auto rounded-full object-cover shadow-lg mb-4">
+                    <h3 class="text-2xl font-bold text-amber-50">Salted Caramel Frappé</h3>
+                    <p class="text-gray-400 my-2 h-16">A sweet and salty blended ice drink, topped with whipped cream.</p>
+                    <span class="text-xl font-semibold text-amber-400">$5.50</span>
+                    <button class="mt-4 w-full px-6 py-2 bg-amber-600 text-white font-bold rounded-full hover:bg-amber-700 focus:outline-none focus:ring-4 focus:ring-amber-500/50 transform hover:scale-105 transition-all duration-300">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section id="our-vibe" class="py-20 bg-[#4a2c2a]">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-4xl md:text-5xl font-bold text-amber-50 mb-4">
+            Experience the Urban Sips Vibe
+          </h2>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-12">
+            Immerse yourself in the art of coffee. See what makes our space special.
+          </p>
+          <div class="max-w-4xl mx-auto rounded-lg shadow-2xl overflow-hidden">
+            <!-- <div class="aspect-video-container">
+              <iframe 
+                src="advertising.mp4"
+                title="Urban Sips Ambiance" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen >
+              </iframe>
+            </div> -->
+            <!-- <div class="aspect-video-container">
+    <video
+        src="advertising.mp4"
+        title="Urban Sips Ambiance"
+        autoplay
+        loop
+        muted
+        playsinline
+        style="width: 100%; height: 100%; object-fit: cover;" /* Inline CSS for size */
+    >
+        Your browser does not support the video tag.
+    </video>
+</div> -->
+<video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
+    <source src="advertising.mp4" type="video/mp4">
+          </div>
+        </div>
+      </section>
+
+      <section id="about-us" class="py-20 bg-[#3a2c22]">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center mb-16">
+                <h2 class="text-4xl font-bold text-amber-50 mb-6">Our Story</h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Born from a passion for the perfect cup, Urban Sips started as a small dream in a bustling city. We believe that coffee is more than just a drink; it's a ritual, a moment of peace, and a way to connect. We are dedicated to sourcing the finest beans, perfecting our craft, and creating a welcoming space for our community.
+                </p>
+            </div>
+
+            <h3 class="text-3xl font-bold text-center text-amber-50 mb-12">
+                Achievements & Awards
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Award Card 1 -->
+                <div class="bg-black/20 p-6 rounded-lg shadow-lg text-center text-gray-300 border border-amber-800/50 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-black/40">
+                    <div class="mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-amber-100">Golden Bean Award</h4>
+                    <p class="text-sm">Voted Best Espresso in the region for our signature Velvet Espresso blend. <br/><strong>2023</strong></p>
+                </div>
+
+                <!-- Award Card 2 -->
+                <div class="bg-black/20 p-6 rounded-lg shadow-lg text-center text-gray-300 border border-amber-800/50 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-black/40">
+                    <div class="mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 4h-4L7.11 16.63 4.5 12 9 4H5L.5 12 5 20h4l7.89-12.63L19.5 12 15 20h4l4.5-8L19 4z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-amber-100">Community Choice</h4>
+                    <p class="text-sm">Recognized for creating the most welcoming and vibrant atmosphere for our customers. <br/><strong>2022</strong></p>
+                </div>
+
+                <!-- Award Card 3 -->
+                <div class="bg-black/20 p-6 rounded-lg shadow-lg text-center text-gray-300 border border-amber-800/50 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl hover:bg-black/40">
+                     <div class="mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                             <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-amber-100">Sustainable Sourcing</h4>
+                    <p class="text-sm">Awarded for our commitment to ethical sourcing and supporting fair trade coffee farms. <br/><strong>2021</strong></p>
+                </div>
+            </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="bg-[#2a1c12] py-8">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2024 Urban Sips Coffee. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-amber-500 transition-colors">Facebook</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const navMenu = document.getElementById('nav-menu');
+
+        const toggleMenu = () => {
+          const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+          mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+          navMenu.classList.toggle('hidden');
+          navMenu.classList.toggle('flex');
+        };
+
+        if (mobileMenuButton && navMenu) {
+          mobileMenuButton.addEventListener('click', toggleMenu);
+        }
+
+        // --- Smooth Scrolling & Mobile Menu Closing ---
+        const navLinks = document.querySelectorAll('#nav-menu a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only handle smooth scrolling for on-page anchor links
+                if (this.hash !== "" && this.pathname === window.location.pathname) {
+                    e.preventDefault(); 
+                    const targetElement = document.querySelector(this.hash);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                // Close mobile menu if it's open
+                if (mobileMenuButton.getAttribute('aria-expanded') === 'true') {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // --- Intersection Observer for menu items scroll animation ---
+        const menuItems = document.querySelectorAll('.menu-item');
+        if (menuItems.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 
+            });
+
+            menuItems.forEach(item => {
+                observer.observe(item);
+            });
+        }
+      });
+    </script>
+  </body>
+</html>
